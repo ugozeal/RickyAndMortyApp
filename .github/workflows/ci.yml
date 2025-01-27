@@ -19,8 +19,8 @@ jobs:
 
     - name: Clean build folder
       run: |
-        xcodebuild clean -project RickyAndMortyApp.xcodeproj -scheme RickyAndMortyApp -configuration Debug
+        xcodebuild clean -project RickyAndMortyApp/RickyAndMortyApp.xcodeproj -scheme RickyAndMortyApp -configuration Debug
 
     - name: Build the app
       run: |
-        xcodebuild build -project RickyAndMortyApp.xcodeproj -scheme RickyAndMortyApp -sdk iphonesimulator -configuration Debug
+        xcodebuild build -project RickyAndMortyApp/RickyAndMortyApp.xcodeproj -scheme RickyAndMortyApp -sdk iphonesimulator -configuration Debug
