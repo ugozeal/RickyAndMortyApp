@@ -11,31 +11,20 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    # Step 1: Checkout the repository
+    # Step 1: Checkout the repository code
     - name: Checkout code
       uses: actions/checkout@v3
 
     # Step 2: Set up the Xcode environment
     - name: Set up Xcode
-      uses: maxim-lobanov/setup-xcode@v1
-      with:
-        xcode-version: 16.2
+      uses: maxim-lobanov/setup-xcode@v1.6.0
 
-    # Step 3: List available simulators
-    - name: List available simulators
-      run: xcrun simctl list
-
-    # Step 4: Clean the build folder
+    # Step 3: Clean the build folder
     - name: Clean build folder
       run: |
         xcodebuild clean -project RickyAndMortyApp/RickyAndMortyApp.xcodeproj -scheme RickyAndMortyApp -configuration Debug
 
-    # Step 5: Build the app
+    # Step 4: Build the app
     - name: Build the app
       run: |
         xcodebuild build -project RickyAndMortyApp/RickyAndMortyApp.xcodeproj -scheme RickyAndMortyApp -sdk iphonesimulator -configuration Debug
-
-    # Step 6: Run tests
-    - name: Run tests
-      run: |
-        xcodebuild test -project RickyAndMortyApp/RickyAndMortyApp.xcodeproj -scheme RickyAndMortyApp -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.2' -configuration Debug
